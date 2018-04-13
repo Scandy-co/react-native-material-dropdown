@@ -609,12 +609,14 @@ export default class Dropdown extends PureComponent {
       value:
       label;
 
-    let color = disabled?
+    let color = item.color ? item.color : itemColor;
+
+    color = disabled?
       disabledItemColor:
       ~selected?
         index === selected?
           selectedItemColor:
-          itemColor:
+          color:
         selectedItemColor;
 
     let textStyle = { color, fontSize };

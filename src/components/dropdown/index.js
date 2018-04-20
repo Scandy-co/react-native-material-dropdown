@@ -134,6 +134,7 @@ export default class Dropdown extends PureComponent {
     baseColor: PropTypes.string,
 
     itemTextStyle: Text.propTypes.style,
+    labelStyle: Text.propTypes.style,
 
     itemCount: PropTypes.number,
     itemPadding: PropTypes.number,
@@ -482,6 +483,7 @@ export default class Dropdown extends PureComponent {
       labelExtractor,
       dropdownOffset,
       renderAccessory = this.renderAccessory,
+      labelStyle,
     } = this.props;
 
     let index = this.selectedIndex();
@@ -507,9 +509,9 @@ export default class Dropdown extends PureComponent {
       <TextField
         label=''
         labelHeight={dropdownOffset.top - Platform.select({ ios: 1, android: 2 })}
-
+        h2
         {...props}
-
+        style={labelStyle}
         value={title}
         editable={false}
         onChangeText={undefined}
@@ -635,6 +637,7 @@ export default class Dropdown extends PureComponent {
         <Text style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
           {title}
         </Text>
+        <Text style={{ position: 'absolute', right: 10 }}>{index === selected ? '\u25CF' : '\u25CB'}</Text>
       </DropdownItem>
     );
   }

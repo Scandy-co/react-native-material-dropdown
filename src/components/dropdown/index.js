@@ -505,10 +505,15 @@ export default class Dropdown extends PureComponent {
       title:
       String(title);
 
+    let labelHeight = dropdownOffset.top - Platform.select({ ios: 1, android: 2 });
+    if( this.props.label == '' || this.props.label === undefined ){
+      labelHeight = 0
+    }
+
     return (
       <TextField
         label=''
-        labelHeight={dropdownOffset.top - Platform.select({ ios: 1, android: 2 })}
+        labelHeight={labelHeight}
         h2
         {...props}
         style={labelStyle}
